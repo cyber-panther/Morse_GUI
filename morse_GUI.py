@@ -174,16 +174,19 @@ def blinkMorseSet(Input):
         
         global code
         code = code + " | "
-    
 
 def enter_text():
     input = inputer.get("1.0", "end-1c")
+    
+    if(len(input)>12):
+        outputer.config(text="Please input less characters")
+        return
     blinkMorseSet(input)
     
     global code
     outputer.config(text=code)
     code = "| "
-
+    
 ### Widgets ###
 inputer = Text(win, height=2, width=48, bg="light yellow")
 outputer = Label(win, height=2, width=48, bg="bisque1")
